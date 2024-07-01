@@ -1,0 +1,129 @@
+git reset --hard   ---> took the head
+git reset origin/master
+git branch -d old-branch.
+
+While creating the new one
+
+git branch XXXX
+git add .
+git commit -m "Commit message here"
+git push origin branch_name
+
+While appending additional changes
+
+git status
+git add .
+git commit   (git commit --amend) (Jus git commit not require git pull origin master)
+
+git pull origin branch_name  (Must this case to avoid non-forward issue) (This will not update your current branch with master branch.) (It's optional; but good practice to do; git pull origin master command essentially combines git fetch and git merge into one command. )
+
+git push origin branch_name
+
+
+(TRY THE BELOW ONE FROM NEXT TIME AND FIX TO FOLLOW)
+
+git pull origin master
+
+<NO CONFLICTS - GOOD> OR <FIX CONFLICTS>
+
+git add . --> all yur changes and conflicts fixed
+git commit   -> commit message with "Rebased and yur changes"
+
+git push origin <BRANCH_NAME>
+------------------------------------------------
+
+When you want to update the working git branch "new_changes" with recent master changes
+
+First update master branch with new changes  -> git pull --rebase 
+git log HEAD   -> git log --oneline
+git checkout branch_name
+git fetch origin    -> Fetch the latest changes from the remote repository
+
+git merge origin/master   -> Merge changes from master into "Branch_name"
+(OR)
+git rebase origin/master  -> if you want to rebase your changes on top of master 
+git rebase --continue -> do it by following the git prompts
+
+git push origin <branch_name>
+
+>>>>YOU'll see conflicts here<<<<<<
+
+remove the conflicts by manually
+then do git add . or git rm <fileName>
+then git rebase --continue    (This step which helps to update the branch and no need to give git push (git push failed when I tried))
+
+git pull origin branch_name - It steps helps to avoid the git push failure
+git push origin branch_name
+
+----------------------------------------------------------
+
+
+
+FOR CHERRY PICK PROCEDURE
+
+git status
+git log --> will give you commit-id or commit-hash
+git checkout <new_branch>
+git cherry-pick <commit_id>  --> (Tis will bring the commited changes w.r.t that specific commit-id)
+
+<FIX THE CONFLICTS IF ANY>
+
+git commit -m "Yur message here"  (OR) git cherry-pick --continue
+git pull origin <branch_name>
+git push origin <branch_name>
+
+------------------------------------------------------------------------
+
+TO BRING THE BRANCH_A changes to NEWLY CREATED BRANCH_B and creating the pull request from BRANCH_B
+
+git status
+git branch <BRANCH_B>
+
+git checkout BRANCH_B
+
+git merge BRANCH_A
+
+<FIX CONFLICTS IF ANY>
+
+git commit -m "Yur message here"
+
+git pull origin <branch_name> --> IT WON'T WORK IF IT'S CREATING NEW, BECUZ IT DOESN'T ANY ORG
+
+git push origin <BRANCH_B>
+
+---------------------------------------------------------------------------------
+
+keep in mind: some time git commit alone is require if any conflicts within your change(Jus clue not confirmed one)
+ctrl + c -> if terminal went to insert/replace state
+
+
+dev/artf2540476_lanes_matching_implementation
+
+git password - VM8}6tLq|@IHZU
+
+Click on "master" remote repo -> do fetch all (it'll fetch all the remote changes)
+create a new branch
+do changes
+go to commit options -> select the files to commit and add the commit message then "commit and push".
+
+whilel appending other changes
+
+do the changes
+go to commit option -> commit and push (if any commit message update, give amend commit and push)
+
+
+[artf2540469] Lanes Reader Implementation
+
+1. Measured file reader
+2. Reference file reader
+
+
+7376ab8
+
+git fetch origin
+git pull origin master
+
+do git commit --amend --> to change the commit message because after pull commit message looks like "Merge branch blaw blaw" and change the commit msg according to our format
+
+git push origin <BRANCH_NAME>
+
