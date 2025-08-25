@@ -1,4 +1,6 @@
 import streamlit as st
+import pandas as pd
+import streamlit.components.v1 as components
 from PyPDF2 import PdfReader
 from langchain.text_splitter import RecursiveCharacterTextSplitter
 import os
@@ -13,7 +15,7 @@ from dotenv import load_dotenv
 
 import os
 from google.colab import userdata
-sec_key="your_api_key_here"
+sec_key="AIzaSyAGeiAI5ZOaMXn3zNzwDiMbeg086EzKeqM"
 os.environ["GOOGLE_API_KEY"] = sec_key
 
 genai.configure(api_key=sec_key)
@@ -86,8 +88,23 @@ def user_input(user_question):
 
 
 def main():
+  
     st.set_page_config("Chat PDF")
     st.header("Chat with you own PDF using Gemini Model💁")
+   
+    
+    data = {
+        "Name": ["Alice", "Bob", "Charlie"],
+        "Age": [24, 30, 29],
+        "City": ["New York", "Paris", "London"]
+    }
+
+    df = pd.DataFrame(data)
+
+    st.title("HTML Table Example")
+
+# Display a static table
+    st.table(df)
 
     user_question = st.text_input("How can I educate you from the PDF Files you uploaded!!")
 
@@ -103,8 +120,22 @@ def main():
                 text_chunks = get_text_chunks(raw_text)
                 get_vector_store(text_chunks)
                 st.success("Done")
+     
+# Embed HTML + JS
+    st.title("Calling JavaScript in Streamlit")
+    components.html(
+        """
+        <button onclick="sayHello()">Click Me</button>
+        <p id="output"></p>
 
-
+        <script>
+            function sayHello() {
+                document.getElementById("output").innerHTML = "Hello from JavaScript!";
+            }
+        </script>
+        """,
+        height=200,
+    )
 
 if __name__ == "__main__":
     main()
