@@ -15,6 +15,7 @@ from dotenv import load_dotenv
 
 import os
 from google.colab import userdata
+## https://aistudio.google.com/apikey 
 sec_key="AIzaSyAGeiAI5ZOaMXn3zNzwDiMbeg086EzKeqM"
 os.environ["GOOGLE_API_KEY"] = sec_key
 
@@ -139,3 +140,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+
